@@ -1,0 +1,118 @@
+/* Hallmark · shape: app screen · genre: modern-minimal · theme: custom
+ * paper: oklch(98.5% 0.003 240) · accent: oklch(65% 0.22 38) · display: Plus Jakarta Sans · body: Plus Jakarta Sans
+ * nav: edge-aligned · signature: sales analytics · states: interactive
+ * axes: light/geometric-sans/warm · posture: workbench · contrast: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P_ H_ E_ S_ R_ V_ · weakest: _, clean human enterprise layout */
+@import "./tokens.css";
+@import "./base.css" layer(base);
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 222.2 84% 4.9%;
+  }
+  html, body {
+    overflow-x: clip;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  letter-spacing: -0.01em;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-rule);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
+
+/* Accessible status badges */
+.badge-pill-positive {
+  background-color: var(--color-positive-bg);
+  color: var(--color-positive-fg);
+  border: 1px solid var(--color-positive-border);
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  padding: var(--space-3xs) var(--space-xs);
+  font-size: 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.badge-pill-negative {
+  background-color: var(--color-negative-bg);
+  color: var(--color-negative-fg);
+  border: 1px solid var(--color-negative-border);
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  padding: var(--space-3xs) var(--space-xs);
+  font-size: 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+/* Executive Document Printing Styles */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm;
+  }
+
+  body {
+    background-color: var(--color-paper) !important;
+    color: var(--color-ink) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide app chrome, sidebar, nav, filter bars, action toolbars */
+  header,
+  nav,
+  aside,
+  button,
+  .no-print,
+  [data-print-hide="true"] {
+    display: none !important;
+  }
+
+  /* Ensure the printed document fills width cleanly */
+  #printable-report-document {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 8mm !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: var(--color-paper) !important;
+  }
+
+  tr, .avoid-break {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}
